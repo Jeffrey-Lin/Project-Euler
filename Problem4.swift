@@ -4,7 +4,9 @@
 // The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
 // Find the largest palindrome made from the product of two 3-digit numbers.
 //
+// Title: Largest Palindrome Product
 // Author: Jeffrey Lin
+// Date: July 31, 2016
 
 private func isPalindrome(num: String) -> Bool {
     return num == String(num.characters.reverse())
