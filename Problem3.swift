@@ -19,14 +19,16 @@ private func isPrime(number: Int) -> Bool {
   return true
 }
 
-private var num = 600851475143
+private var num = (Process.arguments.count == 1 ? 600851475143 : Int(Process.arguments[1]))
+if num == nil { num = 600851475143 } // If argument is not a number.
+
 private var largestPrime = 1
 private var index = 2
 
-while index <= num {
-  if num % index == 0 {
+while index <= num! {
+  if num! % index == 0 {
     if isPrime(index) {
-      num /= index
+      num! /= index
       largestPrime = index
     }
   }

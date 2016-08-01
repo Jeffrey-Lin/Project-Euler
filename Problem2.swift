@@ -8,11 +8,14 @@
 // Author: Jeffrey Lin
 // Date: July 11, 2016
 
+private var num = (Process.arguments.count == 1 ? 4_000_000 : Int(Process.arguments[1]))
+if num == nil { num = 4_000_000 } // If argument is not a number.
+
 private var sum = 0
 private var firstNum = 1
 private var secondNum = 2
 
-while secondNum < 4_000_000 {
+while secondNum < num {
   if secondNum % 2 == 0 {
       sum += secondNum
   }
