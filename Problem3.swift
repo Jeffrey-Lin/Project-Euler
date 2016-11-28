@@ -19,20 +19,23 @@ private func isPrime(number: Int) -> Bool {
   return true
 }
 
-private var num = (Process.arguments.count == 1 ? 600851475143 : Int(Process.arguments[1]))
-if num == nil { num = 600851475143 } // If argument is not a number.
+public func calculateLargestPrime(number: Int) -> Int {
+  var largestPrime = 1
+  var index = 2
 
-private var largestPrime = 1
-private var index = 2
-
-while index <= num! {
-  if num! % index == 0 {
-    if isPrime(index) {
-      num! /= index
-      largestPrime = index
+  while index <= num! {
+    if num! % index == 0 {
+      if isPrime(number: index) {
+        num! /= index
+        largestPrime = index
+      }
     }
+    index += 1
   }
-  index += 1
+  return largestPrime
 }
 
-print(largestPrime)
+private var num = (CommandLine.arguments.count == 1 ? 600851475143 : Int(CommandLine.arguments[1]))
+if num == nil { num = 600851475143 } // If argument is not a number.
+
+print(calculateLargestPrime(number: num!))

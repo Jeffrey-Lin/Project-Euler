@@ -19,7 +19,7 @@ private func isPrime(number: Int) -> Bool {
   return true
 }
 
-private var num = (Process.arguments.count == 1 ? 100 : Int(Process.arguments[1]))
+private var num = (CommandLine.arguments.count == 1 ? 100 : Int(CommandLine.arguments[1]))
 if num == nil { num = 100 } // If argument is not a number.
 
 private var count = 0

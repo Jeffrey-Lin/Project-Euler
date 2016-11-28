@@ -8,29 +8,34 @@
 // Author: Jeffrey Lin
 // Date: July 31, 2016
 
-private var max = (Process.arguments.count == 1 ? 999 : Int(Process.arguments[1]))
-if max == nil { max = 999 } // If argument is not a number.
-private var second_max = (Process.arguments.count == 1 ? 999 : Int(Process.arguments[2]))
-if second_max == nil { second_max = 999 } // If argument is not a number.
-
 private func isPalindrome(num: String) -> Bool {
-    return num == String(num.characters.reverse())
+    return num == String(num.characters.reversed())
 }
 
-var largestPalindrome = 0
+public func findLargestPalindromeFromProductOf(a: Int, b: Int) -> Int {
+  var largestPalindrome = 0
+  var temp_a = a
 
-while max! > max!/2 {
-  var temp_second_max = second_max!
-  while temp_second_max > 0 {
-    if isPalindrome(String(temp_second_max * max!)) {
-      if temp_second_max * max! > largestPalindrome {
-        largestPalindrome = temp_second_max * max!
+  while temp_a > a/2 {
+    var temp_b = b
+    while temp_b > 0 {
+      if isPalindrome(num: String(temp_b * temp_a)) {
+        if temp_b * temp_a > largestPalindrome {
+          largestPalindrome = temp_b * max!
+        }
       }
+      temp_b -= 1
     }
-    temp_second_max -= 1
+
+    temp_a -= 1
   }
 
-  max! -= 1
+  return largestPalindrome
 }
 
-print(largestPalindrome)
+private var max = (CommandLine.arguments.count == 1 ? 999 : Int(CommandLine.arguments[1]))
+if max == nil { max = 999 } // If argument is not a number.
+private var second_max = (CommandLine.arguments.count == 1 ? 999 : Int(CommandLine.arguments[2]))
+if second_max == nil { second_max = 999 } // If argument is not a number.
+
+print(findLargestPalindromeFromProductOf(a: max!, b: second_max!))

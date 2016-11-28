@@ -8,21 +8,24 @@
 // Author: Jeffrey Lin
 // Date: July 11, 2016
 
-private var num = (Process.arguments.count == 1 ? 4_000_000 : Int(Process.arguments[1]))
-if num == nil { num = 4_000_000 } // If argument is not a number.
+public func sumOfEvenValuedFibonnaci(under number: Int) -> Int {
+  var sum = 0
+  var firstNum = 1
+  var secondNum = 2
 
-private var sum = 0
-private var firstNum = 1
-private var secondNum = 2
+  while secondNum < number {
+    if secondNum % 2 == 0 {
+        sum += secondNum
+    }
 
-while secondNum < num {
-  if secondNum % 2 == 0 {
-      sum += secondNum
+    let temp = secondNum
+    secondNum += firstNum
+    firstNum = temp
   }
-
-  let temp = secondNum
-  secondNum += firstNum
-  firstNum = temp
+  return sum
 }
 
-print(sum)
+private var num = (CommandLine.arguments.count == 1 ? 4_000_000 : Int(CommandLine.arguments[1]))
+if num == nil { num = 4_000_000 } // If argument is not a number.
+
+print(sumOfEvenValuedFibonnaci(under: num!))
